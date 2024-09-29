@@ -4,6 +4,7 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useState } from 'react';
+import ThemedTextInput from '@/components/ThemedTextInput';
 
 export default function HomeScreen() {
   const [destination, setDestination] = useState('')
@@ -13,12 +14,20 @@ export default function HomeScreen() {
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
+          source={require('@/assets/images/hero-img.png')}
           style={styles.reactLogo}
         />
       }>
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Go travel, no hassle!</ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.titleContainer}>
+        <ThemedTextInput
+          placeholder='Search your next destination'
+          defaultValue=''
+          onChangeText={newText => setDestination(newText)}
+          style={styles.textInput}
+        />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
@@ -70,4 +79,7 @@ const styles = StyleSheet.create({
     left: 0,
     position: 'absolute',
   },
+  textInput: {
+    width: '100%'
+  }
 });
